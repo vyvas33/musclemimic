@@ -3,7 +3,9 @@
 Full code and checkpoints coming soon...
 
 **MSK models**: [https://github.com/amathislab/musclemimic_models](https://github.com/amathislab/musclemimic_models)
+
 **Retargeted Dataset**: [amathislab/musclemimic-retargeted](https://huggingface.co/datasets/amathislab/musclemimic-retargeted)
+
 For the time being, please read our blog post: [cnai.epfl.ch/mm-blog](https://cnai.epfl.ch/mm-blog)
 
 ## Reference
