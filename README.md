@@ -59,7 +59,9 @@ For CUDA (Linux x86_64), install the CUDA-enabled JAX extra:
 uv sync --extra cuda
 ```
 
-### Test with Demo Cache (Recommended for first-time users!)
+### Test with Demo Cache
+> [!TIP]
+> Recommended for first-time users. Start here for the fastest path to a working setup.
 
 No AMASS download needed! We provide pre-retargeted demo motions for both **MyoArmBimanual** and **MyoFullBody** via a gated Hugging Face dataset.
 
@@ -87,7 +89,7 @@ uv run bimanual/experiment.py --config-name=conf_bimanual_demo
 uv run fullbody/experiment.py --config-name=conf_fullbody_demo
 ```
 
-### Evaluate a Checkpoint (MuJoCo CPU, e.g. MacOS with M Chips)
+### Evaluate a Checkpoint (MuJoCo CPU, e.g. macOS on Apple silicon)
 
 Examples below assume you have already downloaded the demo cache for MyoFullBody:
 ```bash

@@ -81,7 +81,3 @@ For bug reports, include:
 - Your platform and Python version
 - Whether you used CPU, CUDA, MuJoCo, SMPL, or GMR extras
 - The full traceback or failure log
-
-## Review Ownership
-
-The repository includes a placeholder `CODEOWNERS` file, but it still needs real GitHub usernames or teams before automatic reviewer assignment can be enabled.
