@@ -1,4 +1,0 @@
-bimanual
-fullbody
-loco_mujoco
-musclemimic
