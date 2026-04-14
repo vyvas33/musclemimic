@@ -1,3 +1,63 @@
+Metadata-Version: 2.4
+Name: musclemimic
+Version: 0.1.0
+Summary: Towards Embodied AI with MuscleMimic: Unlocking full-body musculoskeletal motor learning at scale
+Author: MuscleMimic Team
+License-Expression: Apache-2.0
+Project-URL: Homepage, https://github.com/amathislab/musclemimic
+Project-URL: Repository, https://github.com/amathislab/musclemimic
+Project-URL: Issues, https://github.com/amathislab/musclemimic/issues
+Keywords: Imitation Learning,Reinforcement Learning,Biomechanics,Muscle Models,Motion Capture,JAX,MuJoCo
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy==2.2.6
+Requires-Dist: scipy>=1.14.0
+Requires-Dist: mujoco-mjx==3.4.0
+Requires-Dist: mujoco==3.4.0
+Requires-Dist: warp-lang==1.10.0
+Requires-Dist: jax==0.7.2
+Requires-Dist: jaxlib==0.7.2
+Requires-Dist: flax==0.12.0
+Requires-Dist: optax>=0.2.4
+Requires-Dist: orbax==0.1.9
+Requires-Dist: distrax==0.1.7
+Requires-Dist: hydra-core
+Requires-Dist: pyyaml
+Requires-Dist: ml-collections>=1.1.0
+Requires-Dist: opencv-python
+Requires-Dist: gitpython
+Requires-Dist: lxml>=6.0.0
+Requires-Dist: tqdm
+Requires-Dist: huggingface_hub
+Requires-Dist: imageio>=2.37.0
+Requires-Dist: imageio-ffmpeg>=0.6.0
+Requires-Dist: glfw>=2.9.0
+Requires-Dist: seaborn>=0.13.2
+Requires-Dist: metrx
+Requires-Dist: wandb>=0.19.10
+Requires-Dist: viser>=1.0.10
+Requires-Dist: trimesh>=4.0.0
+Requires-Dist: Pillow>=10.0.0
+Requires-Dist: musclemimic_models>=1.0.2
+Provides-Extra: dev
+Requires-Dist: ruff; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: pre-commit; extra == "dev"
+Provides-Extra: cuda
+Requires-Dist: jax[cuda12]==0.7.2; (sys_platform == "linux" and platform_machine == "x86_64") and extra == "cuda"
+Provides-Extra: smpl
+Requires-Dist: torch; extra == "smpl"
+Requires-Dist: smplx @ git+https://github.com/amathislab/smplx ; extra == "smpl"
+Requires-Dist: joblib; extra == "smpl"
+Provides-Extra: gmr
+Requires-Dist: general-motion-retargeting @ git+https://github.com/amathislab/gmr_plus.git ; extra == "gmr"
+Dynamic: license-file
+
 <p align="center">
   <img src="./assets/banner.jpg" alt="Banner" width="100%">
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-76B900.svg" alt="License"></a>
@@ -102,10 +162,9 @@ uv run bimanual/experiment.py --config-name=conf_bimanual_demo wandb.mode=disabl
 uv run fullbody/experiment.py --config-name=conf_fullbody_demo wandb.mode=disabled
 ```
 
-Run evaluation with the MuJoCo viewer (CPU), using demo motions.
-On macOS, use `mjpython` for viewer-based MuJoCo commands. On Linux, a regular `python` entrypoint is sufficient:
+Run evaluation with the MuJoCo viewer (CPU), using demo motions:
 ```bash
-uv run mjpython fullbody/eval.py \
+uv run --python 3.11 mjpython fullbody/eval.py \
   --path hf://amathislab/mm-10m-2 \
   --motion_path KIT/314/walking_medium09_poses \
   --use_mujoco \
@@ -116,7 +175,7 @@ uv run mjpython fullbody/eval.py \
 ```
 
 ```bash
-uv run mjpython fullbody/eval.py \
+uv run --python 3.11 mjpython fullbody/eval.py \
   --path hf://amathislab/mm-10m-2 \
   --motion_path KIT/348/turn_right03_poses \
   --use_mujoco \
@@ -127,7 +186,7 @@ uv run mjpython fullbody/eval.py \
 ```
 
 ```bash
-uv run mjpython fullbody/eval.py \
+uv run --python 3.11 mjpython fullbody/eval.py \
   --path hf://amathislab/mm-10m-2 \
   --motion_path KIT/4/WalkInCounterClockwiseCircle04_poses \
   --use_mujoco \
@@ -299,12 +358,12 @@ For contributor setup and review guidelines, see [CONTRIBUTING.md](CONTRIBUTING.
 Typical local workflow:
 
 ```bash
-make install-dev
-make precommit-install
+uv sync --extra dev
+uv run pre-commit install
 make ci
 ```
 
-`pre-commit` currently targets a curated subset of files while the repository is being migrated toward broader coverage. `make lint` and `make format` intentionally follow that same scoped set rather than reformatting the whole repository. Please keep changes to `.pre-commit-config.yaml`'s `files:` allowlist in dedicated cleanup PRs rather than bundling them with functional changes.
+`pre-commit` currently targets a curated subset of files while the repository is being migrated toward broader coverage. Please keep changes to `.pre-commit-config.yaml`'s `files:` allowlist in dedicated cleanup PRs rather than bundling them with functional changes.
 
 
 ## Citation
