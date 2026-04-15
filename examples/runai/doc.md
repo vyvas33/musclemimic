@@ -1,13 +1,3 @@
-# Setup access token to use private repository gmr_plus
-
-Go to github and create a new finegrained personal access token with repo access. Go to settings -> Developer settings -> Personal access tokens -> Fine-grained tokens -> Generate new token.
-![alt text](image.png)
-
-```bash
-echo "machine github.com login x-access-token password <generated_token>" > /mnt/upamathis/scratch/<username>/.netrc
-chmod 600 /mnt/upamathis/scratch/<username>/.netrc
-```
-
 # Submitting Jobs with Run:AI
 An example of submitting with Run:AI
 
