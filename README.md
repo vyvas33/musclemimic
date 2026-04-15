@@ -52,6 +52,8 @@ Depending on how you plan to use `musclemimic`, the requirements differ:
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # 2. Install dependencies
+git clone https://github.com/amathislab/musclemimic
+cd musclemimic
 uv sync
 ```
 For CUDA (Linux x86_64), install the CUDA-enabled JAX extra:
