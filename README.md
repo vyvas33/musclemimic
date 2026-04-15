@@ -335,6 +335,7 @@ This project will also require downloading additional third-party open-source so
 Inspired by and built on:
 - [MyoSuite](https://github.com/MyoHub/myosuite)
 - [Mujoco_warp](https://github.com/google-deepmind/mujoco_warp)
+- [Kinesis[(https://github.com/amathislab/Kinesis)
 - [LocoMuJoCo](https://github.com/robfiras/loco-mujoco)
 - [SMPL-X](https://github.com/vchoutas/smplx) - Body model for motion retargeting
 - [PureJaxRL](https://github.com/luchris429/purejaxrl)
