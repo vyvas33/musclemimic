@@ -286,6 +286,8 @@ def _canonicalize_resume_path(path_like: str, revision: str = None) -> str:
     if (p / "train_state").is_dir():
         # Read step from metadata/metadata and create expected checkpoint_<step> structure
         import json
+        import shutil
+        import sys
         metadata_file = p / "metadata" / "metadata"
         if metadata_file.is_symlink():
             metadata_file = metadata_file.resolve()
@@ -294,7 +296,26 @@ def _canonicalize_resume_path(path_like: str, revision: str = None) -> str:
         # Create symlink with expected name in parent directory
         symlink_path = p.parent / f"checkpoint_{step}"
         if not symlink_path.exists():
-            symlink_path.symlink_to(p)
+            try:
+                symlink_path.symlink_to(p, target_is_directory=True)
+            except OSError as e:
+                # Windows often disallows symlinks without admin/Developer Mode (WinError 1314).
+                # Prefer a directory junction as a zero-copy alias; last resort is a full copy.
+                is_windows = sys.platform.startswith("win")
+                winerr = getattr(e, "winerror", None)
+                if is_windows and winerr in (1314, 5):  # privilege not held / access denied
+                    try:
+                        subprocess.run(
+                            ["cmd", "/c", "mklink", "/J", str(symlink_path), str(p)],
+                            capture_output=True,
+                            text=True,
+                            check=True,
+                        )
+                    except Exception:
+                        # Fall back to copying the checkpoint directory (expensive but reliable).
+                        shutil.copytree(p, symlink_path)
+                else:
+                    raise
         return str(symlink_path)
 
     # Not a recognizable checkpoint location
