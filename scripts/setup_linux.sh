@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
-# One-shot bootstrap for training MuscleMimic on an EC2 GPU instance.
+# One-shot bootstrap for training MuscleMimic on a Linux machine with an NVIDIA GPU.
+# Works on any Ubuntu 22.04 x86_64 box — local workstation, on-prem server, or
+# an EC2 GPU instance (e.g. AWS "Deep Learning Base OSS Nvidia Driver GPU AMI").
 #
-# Assumes: Ubuntu 22.04 x86_64 with NVIDIA driver + CUDA already installed
-# (e.g. AWS "Deep Learning Base OSS Nvidia Driver GPU AMI (Ubuntu 22.04)").
+# Assumes: NVIDIA driver + CUDA are already installed (`nvidia-smi` works).
 #
-# Usage (from the repo root on the EC2 instance):
-#   HF_TOKEN=hf_xxx WANDB_API_KEY=xxx bash scripts/ec2_setup.sh
+# Usage (from the repo root):
+#   HF_TOKEN=hf_xxx WANDB_API_KEY=xxx bash scripts/setup_linux.sh
 #
 # Both tokens are optional. Skip HF_TOKEN only if you won't use gated datasets
 # or hf:// checkpoints. Skip WANDB_API_KEY only if you'll train with
