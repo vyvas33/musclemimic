@@ -1,5 +1,7 @@
 # MuscleMimic: Unlocking full-body musculoskeletal motor learning at scale
 
+**Launching a training session?** See **[RUN.md](RUN.md)**
+
 **MuscleMimic** is a JAX-based motion imitation learning research benchmark specifically designed for **biomechanically accurate muscle-actuated models**. It focuses on advancing research in muscle-driven locomotion and manipulation through high-performance neural policy training. MuscleMimic addresses the computational challenges of training neural policies on complex biomechanical models by:
 - **Muscle-Actuated Dynamics**: Specialized support for physiologically accurate muscle models with Hill-type dynamics
 - **JAX/MJWarp Acceleration**: GPU-parallel training with up to 8,192 environments for rapid experimentation with collision support
