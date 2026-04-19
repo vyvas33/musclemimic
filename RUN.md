@@ -40,7 +40,7 @@ cd musclemimic
 
 # 2. One-shot setup: installs uv, syncs CUDA deps, logs into HF + W&B
 #    and verifies JAX sees the GPU. Idempotent — safe to re-run.
-HF_TOKEN=hf_xxx WANDB_API_KEY=xxx bash scripts/setup_linux.sh
+bash scripts/setup_linux.sh
 
 # 3. Download the demo motion cache
 uv run python -c "from musclemimic.utils.demo_cache import setup_demo_for_myo_fullbody; setup_demo_for_myo_fullbody()"
@@ -105,7 +105,7 @@ rsync -avz --progress \
 ```bash
 ssh AWS-EC2
 cd ~/musclemimic
-HF_TOKEN=hf_xxx WANDB_API_KEY=xxx bash scripts/setup_linux.sh
+bash scripts/setup_linux.sh
 
 # Demo cache
 uv run python -c "from musclemimic.utils.demo_cache import setup_demo_for_myo_fullbody; setup_demo_for_myo_fullbody()"
