@@ -1,10 +1,3 @@
-<p align="center">
-  <img src="./assets/banner.jpg" alt="Banner" width="100%">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-76B900.svg" alt="License"></a>
-  <a href="https://cnai.epfl.ch/mm-blog/"><img src="https://img.shields.io/badge/MuscleMimic-Blog-blue" alt="MuscleMimic Blog"></a>
-  <a href="https://arxiv.org/abs/2603.25544"><img src="https://img.shields.io/badge/Preprint-arXiv-b31b1b" alt="Preprint"></a>
-</p>
-
 # MuscleMimic: Unlocking full-body musculoskeletal motor learning at scale
 
 **MuscleMimic** is a JAX-based motion imitation learning research benchmark specifically designed for **biomechanically accurate muscle-actuated models**. It focuses on advancing research in muscle-driven locomotion and manipulation through high-performance neural policy training. MuscleMimic addresses the computational challenges of training neural policies on complex biomechanical models by:

@@ -46,3 +46,7 @@ references/
 # Analysis outputs
 scripts/bimanual_diverse_motions*
 scripts/test_bimanual_diverse*
+
+.env
+.env.*
+!.env.example
