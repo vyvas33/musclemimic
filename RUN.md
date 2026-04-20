@@ -183,20 +183,3 @@ uv run fullbody/experiment.py --config-name=conf_fullbody_walk \
 
 See `fullbody/conf_fullbody.yaml` for the full set of tunable parameters.
 
----
-
-## Troubleshooting
-
-- **`INFO: Unable to initialize backend 'tpu'`** — harmless. JAX probes every
-  backend at startup. Silence with `JAX_PLATFORMS=cuda`.
-- **`^[[B` garbage in terminal** — you pressed arrow keys while training was
-  foregrounded. Detach into `tmux` and don't press keys in the raw SSH session.
-- **W&B dashboard stays empty for 5+ minutes** — normal. The first log point
-  lands only after the first PPO iteration finishes (`num_envs × num_steps`
-  transitions + a gradient update), which takes time on the first run while
-  kernels JIT-compile.
-- **JAX can't find GPU** — check `nvidia-smi` works, and confirm you installed
-  with `--extra cuda`, not the plain `uv sync`.
-- **OOM on GPU** — lower `experiment.env_params.num_envs` (4096 in
-  `conf_fullbody_walk`, 2048 in `conf_fullbody_demo`). Halving it halves GPU
-  memory use.

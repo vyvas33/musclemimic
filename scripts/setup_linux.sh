@@ -5,7 +5,10 @@
 #
 # Assumes: NVIDIA driver + CUDA are already installed (`nvidia-smi` works).
 #
-# Usage (from the repo root):
+# Usage (from the repo root, with HF_TOKEN and WANDB_API_KEY already exported):
+#   bash scripts/setup_linux.sh
+#
+# Or pass them inline for a one-off run:
 #   HF_TOKEN=hf_xxx WANDB_API_KEY=xxx bash scripts/setup_linux.sh
 #
 # Both tokens are optional. Skip HF_TOKEN only if you won't use gated datasets
